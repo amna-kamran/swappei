@@ -56,8 +56,8 @@ export default async function ProductPage({
           <Image
             src={product.image}
             alt={product.model}
-            width={480}
-            height={480}
+            width={product.imageWidth}
+            height={product.imageHeight}
             className="mx-auto h-80 w-auto"
             priority
           />

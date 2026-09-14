@@ -75,8 +75,8 @@ export default function StoreGrid() {
             <Image
               src={p.image}
               alt={p.model}
-              width={480}
-              height={480}
+              width={p.imageWidth}
+              height={p.imageHeight}
               className="mx-auto h-36 w-auto"
             />
             <p className="mt-4 text-sm text-zinc-500">{p.manufacturer}</p>

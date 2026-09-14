@@ -33,12 +33,12 @@ export default function Header() {
           })}
         </nav>
 
-        <Link
-          href="/store"
+        <a
+          href="https://store.hayaland.com/jp"
           className="hidden rounded-full bg-brand-500 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-600 md:inline-block"
         >
           Shop the Store
-        </Link>
+        </a>
 
         <button
           type="button"

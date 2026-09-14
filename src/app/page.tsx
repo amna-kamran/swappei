@@ -39,12 +39,12 @@ export default function HomePage() {
               warranty, so you can buy with confidence.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/store"
+              <a
+                href="https://store.hayaland.com/jp"
                 className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600"
               >
                 Shop the Store
-              </Link>
+              </a>
               <Link
                 href="/guide"
                 className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400"
@@ -63,8 +63,8 @@ export default function HomePage() {
                 <Image
                   src={p.image}
                   alt={p.model}
-                  width={480}
-                  height={480}
+                  width={p.imageWidth}
+                  height={p.imageHeight}
                   className="mx-auto h-28 w-auto"
                 />
                 <p className="mt-3 text-center text-xs font-medium text-zinc-700">
@@ -99,8 +99,8 @@ export default function HomePage() {
               <Image
                 src={p.image}
                 alt={p.model}
-                width={480}
-                height={480}
+                width={p.imageWidth}
+                height={p.imageHeight}
                 className="mx-auto h-32 w-auto"
               />
               <p className="mt-4 text-sm text-zinc-500">{p.manufacturer}</p>
@@ -145,12 +145,12 @@ export default function HomePage() {
             Browse our full catalog of tested, graded, and guaranteed
             pre-owned smartphones.
           </p>
-          <Link
-            href="/store"
+          <a
+            href="https://store.hayaland.com/jp"
             className="mt-6 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-800 hover:bg-white/90"
           >
             Shop the Store
-          </Link>
+          </a>
         </div>
       </section>
     </div>
