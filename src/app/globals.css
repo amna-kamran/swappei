@@ -24,17 +24,17 @@
   --color-brand-800: #0b5595;
   --color-brand-900: #0e4575;
 
-  /* Accent green, matched to the logo's leaf green (#6FF2B1) */
-  --color-accent-50: #f0fdf7;
-  --color-accent-100: #d7fbe9;
-  --color-accent-200: #aef6d3;
-  --color-accent-300: #6ff2b1;
-  --color-accent-400: #3fdf98;
-  --color-accent-500: #1ec97e;
-  --color-accent-600: #12a866;
-  --color-accent-700: #128a56;
-  --color-accent-800: #146f47;
-  --color-accent-900: #135b3c;
+  /* Accent green, matched to the logo's leaf green (#5FDC9F) */
+  --color-accent-50: #eefcf5;
+  --color-accent-100: #d2f7e3;
+  --color-accent-200: #a6eec8;
+  --color-accent-300: #7ce5ac;
+  --color-accent-400: #5fdc9f;
+  --color-accent-500: #3ec488;
+  --color-accent-600: #2aa470;
+  --color-accent-700: #22855c;
+  --color-accent-800: #1e6b4b;
+  --color-accent-900: #1a573e;
 }
 
 body {
