@@ -33,16 +33,12 @@ export default function ProductOptions({ product }: { product: Product }) {
         onChange={setCondition}
       />
 
-      <button
-        type="button"
-        className="mt-2 w-full rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 sm:w-auto"
+      <a
+        href="https://store.hayaland.com/jp"
+        className="mt-2 inline-block w-full rounded-full bg-brand-500 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-brand-600 sm:w-auto"
       >
-        Add to Cart
-      </button>
-      <p className="text-xs text-zinc-400">
-        This store is currently in preview and not yet processing live
-        orders.
-      </p>
+        Buy on the Store
+      </a>
     </div>
   );
 }
