@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/logo.svg)",
+      "Bash(sleep 1; cat /tmp/swappei-dev.log | tail -30; echo \"---\"; ls /Users/amna/Downloads/swappei/src/app)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3001/logo.svg)",
+      "Bash(curl -s http://localhost:3001/)",
+      "Bash(pkill -f \"next dev\")"
+    ]
+  }
+}
