@@ -653,3 +653,25 @@ export function getManufacturers() {
 export function getProductBySlug(slug: string) {
   return products.find((p) => p.slug === slug);
 }
+
+const STORAGE_STEP = 0.12;
+const CONDITION_STEP = 0.08;
+
+// priceFrom is the floor price: smallest storage, worst listed condition.
+// Larger storage and better condition each add a percentage on top of that floor.
+export function getPrice(
+  product: Product,
+  storage: string,
+  condition: Condition
+) {
+  const storageIndex = Math.max(0, product.storageOptions.indexOf(storage));
+  const conditionsWorstFirst = [...product.conditions].reverse();
+  const conditionIndex = Math.max(0, conditionsWorstFirst.indexOf(condition));
+
+  const price =
+    product.priceFrom *
+    (1 + storageIndex * STORAGE_STEP) *
+    (1 + conditionIndex * CONDITION_STEP);
+
+  return Math.round(price);
+}

@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/lib/products";
+import { getPrice, type Condition, type Product } from "@/lib/products";
 
 export default function ProductOptions({ product }: { product: Product }) {
   const [storage, setStorage] = useState<string>(product.storageOptions[0]);
   const [color, setColor] = useState<string>(product.colorOptions[0]);
-  const [condition, setCondition] = useState<string>(product.conditions[0]);
+  const [condition, setCondition] = useState<Condition>(
+    product.conditions[product.conditions.length - 1]
+  );
+
+  const price = getPrice(product, storage, condition);
 
   return (
     <div className="mt-6 space-y-5">
-      <p className="text-2xl font-semibold text-zinc-900">
-        From ${product.priceFrom}
-      </p>
+      <p className="text-2xl font-semibold text-zinc-900">${price}</p>
 
       <OptionGroup
         label="Storage"
@@ -30,7 +32,7 @@ export default function ProductOptions({ product }: { product: Product }) {
         label="Condition"
         options={product.conditions}
         value={condition}
-        onChange={setCondition}
+        onChange={(v) => setCondition(v as Condition)}
       />
 
       <a
