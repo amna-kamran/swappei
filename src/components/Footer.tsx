@@ -25,7 +25,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-zinc-600 hover:text-teal-700"
+                    className="text-sm text-zinc-600 hover:text-brand-700"
                   >
                     {item.label}
                   </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-zinc-600 hover:text-teal-700"
+                    className="text-sm text-zinc-600 hover:text-brand-700"
                   >
                     {item.label}
                   </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:support@swappei.com"
-                  className="hover:text-teal-700"
+                  className="hover:text-brand-700"
                 >
                   support@swappei.com
                 </a>

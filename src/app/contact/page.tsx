@@ -23,7 +23,7 @@ export default function ContactPage() {
             <p className="font-medium text-zinc-900">Email</p>
             <a
               href="mailto:support@swappei.com"
-              className="text-teal-700 hover:text-teal-800"
+              className="text-brand-700 hover:text-brand-800"
             >
               support@swappei.com
             </a>

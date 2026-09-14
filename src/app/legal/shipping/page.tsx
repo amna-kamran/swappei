@@ -52,7 +52,7 @@ export default function ShippingPage() {
         Shipping questions can be sent to{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>

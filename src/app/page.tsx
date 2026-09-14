@@ -27,7 +27,7 @@ export default function HomePage() {
       <section className="border-b border-zinc-200 bg-zinc-50">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
           <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-teal-700">
+            <p className="text-sm font-medium uppercase tracking-wide text-brand-700">
               Certified pre-owned smartphones
             </p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/store"
-                className="rounded-full bg-teal-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-800"
+                className="rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-800"
               >
                 Shop the Store
               </Link>
@@ -83,7 +83,7 @@ export default function HomePage() {
           </h2>
           <Link
             href="/store"
-            className="text-sm font-medium text-teal-700 hover:text-teal-800"
+            className="text-sm font-medium text-brand-700 hover:text-brand-800"
           >
             View all &rarr;
           </Link>
@@ -94,7 +94,7 @@ export default function HomePage() {
             <Link
               key={p.slug}
               href={`/store/${p.slug}`}
-              className="group rounded-2xl border border-zinc-200 p-5 transition-colors hover:border-teal-300 hover:bg-teal-50/40"
+              className="group rounded-2xl border border-zinc-200 p-5 transition-colors hover:border-accent-400 hover:bg-accent-50/40"
             >
               <Image
                 src={p.image}
@@ -121,7 +121,7 @@ export default function HomePage() {
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {steps.map((step, i) => (
               <div key={step.title}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-teal-700 text-sm font-semibold text-white">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-700 text-sm font-semibold text-white">
                   {i + 1}
                 </div>
                 <h3 className="mt-4 font-medium text-zinc-900">
@@ -137,17 +137,17 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="rounded-3xl bg-teal-700 px-8 py-12 text-center sm:px-16">
+        <div className="rounded-3xl bg-brand-700 px-8 py-12 text-center sm:px-16">
           <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             Ready to find your next phone?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-teal-50">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-brand-50">
             Browse our full catalog of tested, graded, and guaranteed
             pre-owned smartphones.
           </p>
           <Link
             href="/store"
-            className="mt-6 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-teal-800 hover:bg-teal-50"
+            className="mt-6 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-800 hover:bg-brand-50"
           >
             Shop the Store
           </Link>

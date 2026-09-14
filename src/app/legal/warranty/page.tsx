@@ -29,7 +29,7 @@ export default function WarrantyPage() {
       <h2>3. How to Make a Warranty Claim</h2>
       <p>
         Contact us through the{" "}
-        <a href="/contact" className="text-teal-700 hover:text-teal-800">
+        <a href="/contact" className="text-brand-700 hover:text-brand-800">
           Contact page
         </a>{" "}
         with your order number and a description of the issue. We may ask
@@ -49,7 +49,7 @@ export default function WarrantyPage() {
         Warranty questions can be sent to{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>

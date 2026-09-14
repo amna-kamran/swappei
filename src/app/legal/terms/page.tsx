@@ -47,11 +47,11 @@ export default function TermsPage() {
       <h2>4. Returns, Refunds & Warranty</h2>
       <p>
         Returns and refunds are handled in accordance with our{" "}
-        <a href="/legal/returns" className="text-teal-700 hover:text-teal-800">
+        <a href="/legal/returns" className="text-brand-700 hover:text-brand-800">
           Return & Refund Policy
         </a>
         . Devices are covered by our{" "}
-        <a href="/legal/warranty" className="text-teal-700 hover:text-teal-800">
+        <a href="/legal/warranty" className="text-brand-700 hover:text-brand-800">
           Warranty Policy
         </a>
         .
@@ -94,7 +94,7 @@ export default function TermsPage() {
         Questions about these Terms can be sent to{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>

@@ -23,8 +23,8 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-teal-700 ${
-                  active ? "text-teal-700" : "text-zinc-600"
+                className={`text-sm font-medium transition-colors hover:text-brand-700 ${
+                  active ? "text-brand-700" : "text-zinc-600"
                 }`}
               >
                 {item.label}
@@ -35,7 +35,7 @@ export default function Header() {
 
         <Link
           href="/store"
-          className="hidden rounded-full bg-teal-700 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-800 md:inline-block"
+          className="hidden rounded-full bg-brand-700 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-800 md:inline-block"
         >
           Shop the Store
         </Link>

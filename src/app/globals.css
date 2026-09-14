@@ -11,6 +11,30 @@
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Brand blue, matched to the logo's swap-arrow blue (#23A1FF) */
+  --color-brand-50: #eff8ff;
+  --color-brand-100: #dcefff;
+  --color-brand-200: #b9e0ff;
+  --color-brand-300: #86caff;
+  --color-brand-400: #4bb0ff;
+  --color-brand-500: #23a1ff;
+  --color-brand-600: #0c85f0;
+  --color-brand-700: #0a6ac2;
+  --color-brand-800: #0b5595;
+  --color-brand-900: #0e4575;
+
+  /* Accent green, matched to the logo's leaf green (#6FF2B1) */
+  --color-accent-50: #f0fdf7;
+  --color-accent-100: #d7fbe9;
+  --color-accent-200: #aef6d3;
+  --color-accent-300: #6ff2b1;
+  --color-accent-400: #3fdf98;
+  --color-accent-500: #1ec97e;
+  --color-accent-600: #12a866;
+  --color-accent-700: #128a56;
+  --color-accent-800: #146f47;
+  --color-accent-900: #135b3c;
 }
 
 body {

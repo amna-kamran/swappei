@@ -54,7 +54,7 @@ export default function GuidePage() {
             <ol className="mt-4 space-y-3">
               {section.steps.map((step, i) => (
                 <li key={step} className="flex gap-3 text-sm text-zinc-600">
-                  <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-teal-100 text-xs font-semibold text-teal-800">
+                  <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent-100 text-xs font-semibold text-accent-800">
                     {i + 1}
                   </span>
                   <span className="leading-relaxed">{step}</span>

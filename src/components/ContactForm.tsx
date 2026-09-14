@@ -12,7 +12,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-xl border border-teal-200 bg-teal-50 p-6 text-sm text-teal-800">
+      <div className="rounded-xl border border-accent-300 bg-accent-50 p-6 text-sm text-accent-800">
         Thanks for reaching out — we&apos;ve received your message and will
         get back to you soon.
       </div>
@@ -33,7 +33,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           required
-          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-teal-600 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none"
         />
       </div>
 
@@ -49,7 +49,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
-          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-teal-600 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none"
         />
       </div>
 
@@ -65,13 +65,13 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
-          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-teal-600 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none"
         />
       </div>
 
       <button
         type="submit"
-        className="rounded-full bg-teal-700 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-teal-800"
+        className="rounded-full bg-brand-700 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-800"
       >
         Send Message
       </button>

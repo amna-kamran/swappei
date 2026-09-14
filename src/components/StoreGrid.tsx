@@ -70,7 +70,7 @@ export default function StoreGrid() {
           <Link
             key={p.slug}
             href={`/store/${p.slug}`}
-            className="group rounded-2xl border border-zinc-200 p-5 transition-colors hover:border-teal-300 hover:bg-teal-50/40"
+            className="group rounded-2xl border border-zinc-200 p-5 transition-colors hover:border-accent-400 hover:bg-accent-50/40"
           >
             <Image
               src={p.image}
@@ -124,7 +124,7 @@ function FilterSelect({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:border-teal-600 focus:outline-none"
+        className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none"
       >
         {options.map((opt) => (
           <option key={opt} value={opt}>

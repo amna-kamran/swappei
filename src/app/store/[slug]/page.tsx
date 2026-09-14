@@ -44,7 +44,7 @@ export default async function ProductPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <nav className="text-sm text-zinc-500">
-        <Link href="/store" className="hover:text-teal-700">
+        <Link href="/store" className="hover:text-brand-700">
           Store
         </Link>
         <span className="mx-2">/</span>
@@ -64,7 +64,7 @@ export default async function ProductPage({
         </div>
 
         <div>
-          <p className="text-sm font-medium text-teal-700">
+          <p className="text-sm font-medium text-brand-700">
             {product.manufacturer}
           </p>
           <h1 className="mt-1 text-3xl font-semibold tracking-tight text-zinc-900">

@@ -22,7 +22,7 @@ export default function LegalLayout({
               <Link
                 key={item.href}
                 href={item.href}
-                className="block rounded-md px-2 py-1.5 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-teal-700"
+                className="block rounded-md px-2 py-1.5 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-brand-700"
               >
                 {item.label}
               </Link>

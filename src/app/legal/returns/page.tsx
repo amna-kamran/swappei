@@ -26,7 +26,7 @@ export default function ReturnsPage() {
       <h2>3. How to Start a Return</h2>
       <p>
         Contact us through the{" "}
-        <a href="/contact" className="text-teal-700 hover:text-teal-800">
+        <a href="/contact" className="text-brand-700 hover:text-brand-800">
           Contact page
         </a>{" "}
         with your order number and reason for return. We&apos;ll provide
@@ -53,7 +53,7 @@ export default function ReturnsPage() {
         listing, contact us within 30 days of delivery and we&apos;ll
         arrange a replacement, repair, or full refund at no cost to you.
         See our{" "}
-        <a href="/legal/warranty" className="text-teal-700 hover:text-teal-800">
+        <a href="/legal/warranty" className="text-brand-700 hover:text-brand-800">
           Warranty Policy
         </a>{" "}
         for additional coverage details.
@@ -64,7 +64,7 @@ export default function ReturnsPage() {
         Questions about returns can be sent to{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>

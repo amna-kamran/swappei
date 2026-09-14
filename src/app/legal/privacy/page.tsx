@@ -74,7 +74,7 @@ export default function PrivacyPage() {
         contact us at{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
         Questions about this Privacy Policy can be sent to{" "}
         <a
           href="mailto:support@swappei.com"
-          className="text-teal-700 hover:text-teal-800"
+          className="text-brand-700 hover:text-brand-800"
         >
           support@swappei.com
         </a>

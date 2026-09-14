@@ -20,7 +20,7 @@ export default function LegalIndexPage() {
           <li key={item.href}>
             <Link
               href={item.href}
-              className="flex items-center justify-between py-4 text-sm font-medium text-zinc-900 hover:text-teal-700"
+              className="flex items-center justify-between py-4 text-sm font-medium text-zinc-900 hover:text-brand-700"
             >
               {item.label}
               <span aria-hidden="true">&rarr;</span>
