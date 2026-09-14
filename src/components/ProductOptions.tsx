@@ -35,7 +35,7 @@ export default function ProductOptions({ product }: { product: Product }) {
 
       <button
         type="button"
-        className="mt-2 w-full rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-800 sm:w-auto"
+        className="mt-2 w-full rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-brand-600 sm:w-auto"
       >
         Add to Cart
       </button>
@@ -69,7 +69,7 @@ function OptionGroup({
             onClick={() => onChange(opt)}
             className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
               value === opt
-                ? "border-brand-700 bg-brand-700 text-white"
+                ? "border-brand-500 bg-brand-500 text-zinc-900"
                 : "border-zinc-300 text-zinc-700 hover:border-brand-400"
             }`}
           >
