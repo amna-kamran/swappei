@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/store"
-                className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-brand-600"
+                className="rounded-full bg-brand-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600"
               >
                 Shop the Store
               </Link>
@@ -121,7 +121,7 @@ export default function HomePage() {
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {steps.map((step, i) => (
               <div key={step.title}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-sm font-semibold text-zinc-900">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-sm font-semibold text-white">
                   {i + 1}
                 </div>
                 <h3 className="mt-4 font-medium text-zinc-900">
@@ -138,10 +138,10 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="rounded-3xl bg-brand-500 px-8 py-12 text-center sm:px-16">
-          <h2 className="text-2xl font-semibold text-zinc-900 sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             Ready to find your next phone?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-800">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-brand-50">
             Browse our full catalog of tested, graded, and guaranteed
             pre-owned smartphones.
           </p>
