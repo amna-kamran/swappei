@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductBySlug, products } from "@/lib/products";
-import ProductOptions from "@/components/ProductOptions";
+import ProductGallery from "@/components/ProductGallery";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -51,31 +50,22 @@ export default async function ProductPage({
         <span className="text-zinc-700">{product.model}</span>
       </nav>
 
-      <div className="mt-6 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-10">
-          <Image
-            src={product.image}
-            alt={product.model}
-            width={product.imageWidth}
-            height={product.imageHeight}
-            className="mx-auto h-80 w-auto"
-            priority
-          />
-        </div>
-
-        <div>
-          <p className="text-sm font-medium text-brand-700">
-            {product.manufacturer}
-          </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight text-zinc-900">
-            {product.model}
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-            {product.description}
-          </p>
-
-          <ProductOptions product={product} />
-
+      <ProductGallery
+        product={product}
+        header={
+          <>
+            <p className="text-sm font-medium text-brand-700">
+              {product.manufacturer}
+            </p>
+            <h1 className="mt-1 text-3xl font-semibold tracking-tight text-zinc-900">
+              {product.model}
+            </h1>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+              {product.description}
+            </p>
+          </>
+        }
+        footer={
           <div className="mt-10 rounded-xl border border-zinc-200 p-4 text-sm text-zinc-600">
             <p className="font-medium text-zinc-900">
               Every Swappei device includes:
@@ -87,20 +77,22 @@ export default async function ProductPage({
               <li>30-day return window</li>
             </ul>
           </div>
-        </div>
-      </div>
+        }
+      />
 
       <div className="mt-16 border-t border-zinc-200 pt-10">
         <h2 className="text-xl font-semibold text-zinc-900">
           Specifications
         </h2>
-        <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+        <dl className="mt-6 divide-y divide-zinc-100 border-t border-zinc-100">
           {specEntries.map(([key, value]) => (
             <div
               key={key}
-              className="flex justify-between border-b border-zinc-100 pb-2 text-sm"
+              className="flex flex-col gap-1 py-3 text-sm sm:flex-row sm:items-baseline sm:gap-6"
             >
-              <dt className="text-zinc-500">{specLabels[key] ?? key}</dt>
+              <dt className="w-40 flex-none text-zinc-500">
+                {specLabels[key] ?? key}
+              </dt>
               <dd className="font-medium text-zinc-900">{value}</dd>
             </div>
           ))}

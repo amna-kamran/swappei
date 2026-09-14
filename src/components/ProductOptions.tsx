@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { getPrice, type Condition, type Product } from "@/lib/products";
 
-export default function ProductOptions({ product }: { product: Product }) {
+export default function ProductOptions({
+  product,
+  onColorChange,
+}: {
+  product: Product;
+  onColorChange?: (color: string) => void;
+}) {
   const [storage, setStorage] = useState<string>(product.storageOptions[0]);
   const [color, setColor] = useState<string>(product.colorOptions[0]);
   const [condition, setCondition] = useState<Condition>(
@@ -26,7 +32,10 @@ export default function ProductOptions({ product }: { product: Product }) {
         label="Color"
         options={product.colorOptions}
         value={color}
-        onChange={setColor}
+        onChange={(v) => {
+          setColor(v);
+          onColorChange?.(v);
+        }}
       />
       <OptionGroup
         label="Condition"

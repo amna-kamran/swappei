@@ -12,6 +12,9 @@ export type Product = {
   image: string;
   imageWidth: number;
   imageHeight: number;
+  // Optional per-color photo, keyed by a value from colorOptions.
+  // Falls back to `image` for colors without an entry here.
+  imagesByColor?: Record<string, string>;
   shortDescription: string;
   description: string;
   specs: {
@@ -112,7 +115,7 @@ export const products: Product[] = [
       "The Galaxy S23 packs flagship performance into a compact body, with a bright AMOLED display and a versatile triple-camera setup. Fully inspected and graded before listing.",
     specs: {
       display: "6.1\" Dynamic AMOLED 2X, 120Hz",
-      chip: "Snapdragon 8 Gen 2",
+      chip: "Snapdragon 8 Gen 2 for Galaxy",
       camera: "50MP main + 12MP ultra-wide + 10MP telephoto",
       battery: "3,900 mAh",
       connectivity: "5G, USB-C, Wi-Fi 6E",
@@ -173,9 +176,14 @@ export const products: Product[] = [
     conditions: ["Like New", "Excellent", "Good"],
     priceFrom: 399,
     releaseYear: 2023,
-    image: "/products/pixel-8.svg",
-    imageWidth: 480,
-    imageHeight: 480,
+    image: "/products/pixel-8-obsidian.jpg",
+    imageWidth: 1202,
+    imageHeight: 1500,
+    imagesByColor: {
+      Obsidian: "/products/pixel-8-obsidian.jpg",
+      Hazel: "/products/pixel-8-hazel.jpg",
+      Rose: "/products/pixel-8-rose.jpg",
+    },
     shortDescription: "Clean Android experience with a standout camera.",
     description:
       "The Pixel 8 delivers a clean, near-stock Android experience backed by Google's computational photography. A great choice for buyers who want a reliable camera and long software support.",
@@ -184,7 +192,7 @@ export const products: Product[] = [
       chip: "Google Tensor G3",
       camera: "50MP main + 12MP ultra-wide",
       battery: "4,575 mAh",
-      connectivity: "5G, USB-C, Wi-Fi 7",
+      connectivity: "5G, USB-C, Wi-Fi 6E",
     },
   },
   {
@@ -521,7 +529,7 @@ export const products: Product[] = [
       chip: "Snapdragon 8 Gen 1",
       camera: "108MP main + 12MP ultra-wide + 10MP telephoto (3x) + 10MP telephoto (10x)",
       battery: "5,000 mAh",
-      connectivity: "5G, USB-C, Wi-Fi 6",
+      connectivity: "5G, USB-C, Wi-Fi 6E",
     },
   },
   {
