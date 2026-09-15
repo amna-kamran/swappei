@@ -42,7 +42,7 @@ export default function StoreGrid() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-4 border-b border-zinc-200 pb-6">
+      <div className="grid grid-cols-2 gap-3 border-b border-zinc-200 pb-6 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
         <FilterSelect
           label="Manufacturer"
           value={manufacturer}
@@ -65,9 +65,10 @@ export default function StoreGrid() {
             "price-asc": "Price: Low to High",
             "price-desc": "Price: High to Low",
           }}
+          className="col-span-2"
         />
 
-        <p className="ml-auto text-sm text-zinc-500">
+        <p className="col-span-2 text-sm text-zinc-500 sm:col-span-1 sm:ml-auto">
           {filtered.length} model{filtered.length === 1 ? "" : "s"}
         </p>
       </div>
@@ -118,27 +119,45 @@ function FilterSelect({
   onChange,
   options,
   display,
+  className = "",
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   options: string[];
   display?: Record<string, string>;
+  className?: string;
 }) {
   return (
-    <label className="flex items-center gap-2 text-sm text-zinc-600">
+    <label
+      className={`flex flex-col gap-1 text-sm text-zinc-600 sm:flex-row sm:items-center sm:gap-2 ${className}`}
+    >
       <span className="font-medium text-zinc-700">{label}</span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none"
-      >
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {display?.[opt] ?? opt}
-          </option>
-        ))}
-      </select>
+      <div className="relative">
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="h-10 w-full appearance-none rounded-lg border border-zinc-300 bg-white pl-3 pr-8 text-sm text-zinc-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600 sm:h-9 sm:w-auto sm:min-w-[9.5rem]"
+        >
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {display?.[opt] ?? opt}
+            </option>
+          ))}
+        </select>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-500"
+          aria-hidden="true"
+        >
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
     </label>
   );
 }
