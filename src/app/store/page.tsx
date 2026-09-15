@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import StoreGrid from "@/components/StoreGrid";
 
 export const metadata: Metadata = {
@@ -22,7 +23,9 @@ export default function StorePage() {
       </div>
 
       <div className="mt-10">
-        <StoreGrid />
+        <Suspense fallback={null}>
+          <StoreGrid />
+        </Suspense>
       </div>
     </div>
   );

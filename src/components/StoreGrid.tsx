@@ -3,13 +3,20 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { products, getManufacturers, type Condition } from "@/lib/products";
 
 const conditions: Condition[] = ["Like New", "Excellent", "Good", "Fair"];
 
 export default function StoreGrid() {
   const manufacturers = getManufacturers();
-  const [manufacturer, setManufacturer] = useState<string>("All");
+  const searchParams = useSearchParams();
+  const initialManufacturer = searchParams.get("manufacturer");
+  const [manufacturer, setManufacturer] = useState<string>(
+    initialManufacturer && manufacturers.includes(initialManufacturer)
+      ? initialManufacturer
+      : "All"
+  );
   const [condition, setCondition] = useState<string>("All");
   const [sort, setSort] = useState<"price-asc" | "price-desc" | "newest">(
     "newest"

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { products } from "@/lib/products";
+import { getManufacturers, products } from "@/lib/products";
 
 const featured = products.filter((p) =>
   ["iphone-15-pro", "galaxy-s23", "pixel-8", "iphone-14"].includes(p.slug)
@@ -18,6 +18,58 @@ const steps = [
   {
     title: "Fast, tracked shipping",
     body: "Orders are carefully packaged and shipped with tracking so you know exactly when your device will arrive.",
+  },
+];
+
+const brands = getManufacturers().map((name) => ({
+  name,
+  count: products.filter((p) => p.manufacturer === name).length,
+}));
+
+const trustFeatures = [
+  {
+    title: "Certified & tested",
+    body: "Every device passes a full diagnostic inspection covering battery, screen, cameras, and connectivity before it's listed.",
+    icon: (
+      <path
+        d="M12 3l7 3v5c0 4.5-3 8.2-7 9.5C8 19.2 5 15.5 5 11V6l7-3z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+  },
+  {
+    title: "90-day warranty",
+    body: "Every purchase is backed by a 90-day limited warranty covering functional issues, at no extra cost.",
+    icon: (
+      <>
+        <circle cx="12" cy="10" r="6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 15l-2 6 5-2 5 2-2-6" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
+  },
+  {
+    title: "Free US shipping",
+    body: "Standard shipping is free on every order, with tracking provided as soon as your device ships.",
+    icon: (
+      <>
+        <rect x="2" y="7" width="13" height="10" rx="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 10h3.5l3 3v4h-6.5v-7z" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="7" cy="19" r="1.5" />
+        <circle cx="17" cy="19" r="1.5" />
+      </>
+    ),
+  },
+  {
+    title: "30-day returns",
+    body: "Not the right fit? Return it within 30 days of delivery for a full refund.",
+    icon: (
+      <path
+        d="M4 4v5h5M4 9a8 8 0 1 1 2 5.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
   },
 ];
 
@@ -113,6 +165,33 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
+          Shop by brand
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {brands.map((brand) => (
+            <Link
+              key={brand.name}
+              href={`/store?manufacturer=${encodeURIComponent(brand.name)}`}
+              className="group flex items-center justify-between rounded-2xl border border-zinc-200 p-6 transition-colors hover:border-brand-300 hover:bg-brand-50/40"
+            >
+              <div>
+                <p className="text-lg font-semibold text-zinc-900">
+                  {brand.name}
+                </p>
+                <p className="mt-1 text-sm text-zinc-500">
+                  {brand.count} model{brand.count === 1 ? "" : "s"}
+                </p>
+              </div>
+              <span className="text-brand-700 transition-transform group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="border-t border-zinc-200 bg-zinc-50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
@@ -137,6 +216,36 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
+          Why buy from Swappei
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {trustFeatures.map((feature) => (
+            <div key={feature.title}>
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                className="text-brand-700"
+                aria-hidden="true"
+              >
+                {feature.icon}
+              </svg>
+              <h3 className="mt-4 font-medium text-zinc-900">
+                {feature.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                {feature.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <div className="rounded-3xl bg-brand-500 px-8 py-12 text-center sm:px-16">
           <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             Ready to find your next phone?
