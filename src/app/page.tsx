@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ShieldCheck, BadgeCheck, Truck, RotateCcw } from "lucide-react";
 import { getManufacturers, products } from "@/lib/products";
 import PopularModelsCarousel from "@/components/PopularModelsCarousel";
 
@@ -53,68 +54,22 @@ const trustFeatures = [
   {
     title: "Certified & tested",
     body: "Every device passes a full diagnostic inspection covering battery, screen, cameras, and connectivity before it's listed.",
-    icon: (
-      <path
-        d="M12 3l7 3v5c0 4.5-3 8.2-7 9.5C8 19.2 5 15.5 5 11V6l7-3z"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
+    icon: ShieldCheck,
   },
   {
     title: "90-day warranty",
     body: "Every purchase is backed by a 90-day limited warranty covering functional issues, at no extra cost.",
-    icon: (
-      <>
-        <circle
-          cx="12"
-          cy="10"
-          r="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9 15l-2 6 5-2 5 2-2-6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </>
-    ),
+    icon: BadgeCheck,
   },
   {
     title: "Free US shipping",
     body: "Standard shipping is free on every order, with tracking provided as soon as your device ships.",
-    icon: (
-      <>
-        <rect
-          x="2"
-          y="7"
-          width="13"
-          height="10"
-          rx="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 10h3.5l3 3v4h-6.5v-7z"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="7" cy="19" r="1.5" />
-        <circle cx="17" cy="19" r="1.5" />
-      </>
-    ),
+    icon: Truck,
   },
   {
     title: "30-day returns",
     body: "Not the right fit? Return it within 30 days of delivery for a full refund.",
-    icon: (
-      <path
-        d="M4 4v5h5M4 9a8 8 0 1 1 2 5.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
+    icon: RotateCcw,
   },
 ];
 
@@ -122,7 +77,7 @@ export default function HomePage() {
   return (
     <div>
       <section className="overflow-hidden border-b border-zinc-200 bg-zinc-50">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-4 px-4 py-16 sm:px-6 md:grid-cols-[1fr_1.4fr] md:py-24">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-4 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <p className="text-sm font-medium uppercase tracking-wide text-brand-700">
               Certified pre-owned smartphones
@@ -150,15 +105,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="animated-gradient flex h-64 w-full items-center justify-center self-stretch overflow-hidden rounded-3xl pt-10 sm:h-80 md:h-auto">
-            <Image
-              src="/hero/iphone-hero.png"
-              alt="Lineup of iPhone models in different colors"
-              width={905}
-              height={568}
-              className="h-full w-auto"
-              priority
-            />
+          <div className="animated-gradient h-56 w-full overflow-hidden rounded-3xl pt-6 sm:h-72 sm:pt-8 md:h-72 lg:h-80">
+            <div className="relative h-full w-full">
+              <Image
+                src="/hero/iphone-hero.png"
+                alt="Lineup of iPhone models in different colors"
+                fill
+                sizes="(min-width: 768px) 60vw, 100vw"
+                className="object-contain object-bottom"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -183,9 +140,9 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="flex flex-col justify-between rounded-3xl bg-zinc-100 p-8 sm:p-10">
+          <div className="flex flex-col rounded-3xl bg-brand-50 p-8 sm:p-10">
             <Image
-              src={dealProduct.image}
+              src="/products/cutout/iphone-15-cutout.png"
               alt={dealProduct.model}
               width={dealProduct.imageWidth}
               height={dealProduct.imageHeight}
@@ -208,9 +165,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between rounded-3xl bg-zinc-100 p-8 sm:p-10">
+          <div className="flex flex-col rounded-3xl bg-accent-50 p-8 sm:p-10">
             <Image
-              src={warrantyProduct.image}
+              src="/products/cutout/galaxy-s24-cutout.png"
               alt={warrantyProduct.model}
               width={warrantyProduct.imageWidth}
               height={warrantyProduct.imageHeight}
@@ -291,18 +248,13 @@ export default function HomePage() {
         <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {trustFeatures.map((feature) => (
             <div key={feature.title}>
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.75"
+              <feature.icon
+                width={28}
+                height={28}
+                strokeWidth={1.75}
                 className="text-brand-700"
                 aria-hidden="true"
-              >
-                {feature.icon}
-              </svg>
+              />
               <h3 className="mt-4 font-medium text-zinc-900">
                 {feature.title}
               </h3>

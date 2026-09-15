@@ -12,9 +12,9 @@ export default function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-600">
-              We test and grade every phone before it ships, then back it
-              with a real warranty. Swappei is a Sachi Trading (サチ通商)
-              company.
+              Swappei Inc is a US affiliate of Sachi Trading (サチ通商),
+              Japan. We test and grade every phone before it ships, then
+              back it with a real warranty.
             </p>
           </div>
 
@@ -54,7 +54,13 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-zinc-900">Contact</h3>
             <ul className="mt-4 space-y-3 text-sm text-zinc-600">
               <li>Swappei Inc</li>
-              <li>United States</li>
+              <li>80569 Hoylake Drive</li>
+              <li>Indio, CA 92201</li>
+              <li>
+                <a href="tel:+15628228528" className="hover:text-brand-700">
+                  +1 (562) 822-8528
+                </a>
+              </li>
               <li>
                 <a
                   href="mailto:support@swappei.com"
@@ -67,9 +73,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-zinc-200 pt-6 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 border-t border-zinc-200 pt-6 text-xs text-zinc-500">
           <p>&copy; {year} Swappei Inc. All rights reserved.</p>
-          <p>An affiliate of Sachi Trading (サチ通商)</p>
         </div>
       </div>
     </footer>
