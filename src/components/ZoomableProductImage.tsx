@@ -21,11 +21,13 @@ export default function ZoomableProductImage({
   alt,
   imageWidth,
   imageHeight,
+  onExpand,
 }: {
   src: string;
   alt: string;
   imageWidth: number;
   imageHeight: number;
+  onExpand?: () => void;
 }) {
   const boxRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
@@ -73,22 +75,35 @@ export default function ZoomableProductImage({
   return (
     <div
       ref={boxRef}
-      className="relative h-96 w-full cursor-crosshair"
+      className="relative aspect-square w-full cursor-crosshair"
       onMouseEnter={(e) => {
         setActive(true);
         updateFromEvent(e);
       }}
       onMouseLeave={() => setActive(false)}
       onMouseMove={updateFromEvent}
+      onClick={onExpand}
     >
       <Image
         src={src}
         alt={alt}
         fill
-        sizes="(min-width: 1024px) 420px, 350px"
+        sizes="(min-width: 768px) 480px, 100vw"
         className="object-contain"
         priority
       />
+
+      {onExpand && (
+        <span className="pointer-events-none absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-zinc-500 shadow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path
+              d="M9 4H4v5M20 9V4h-5M4 15v5h5M15 20h5v-5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      )}
 
       {active && zoom && (
         <>

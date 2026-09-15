@@ -41,3 +41,42 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    120deg,
+    var(--color-brand-100),
+    var(--color-accent-100),
+    var(--color-brand-200),
+    var(--color-accent-200)
+  );
+  background-size: 300% 300%;
+  animation: gradient-pan 10s ease-in-out infinite;
+}
+
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient {
+    animation: none;
+  }
+}

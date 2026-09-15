@@ -5,6 +5,7 @@ import type { Product } from "@/lib/products";
 import ProductOptions from "./ProductOptions";
 import ProductThumbnails from "./ProductThumbnails";
 import ZoomableProductImage from "./ZoomableProductImage";
+import ProductImageModal from "./ProductImageModal";
 
 export default function ProductGallery({
   product,
@@ -16,6 +17,7 @@ export default function ProductGallery({
   footer: React.ReactNode;
 }) {
   const [color, setColor] = useState<string>(product.colorOptions[0]);
+  const [modalOpen, setModalOpen] = useState(false);
   const imageSrc = product.imagesByColor?.[color] ?? product.image;
 
   const thumbnails = product.imagesByColor
@@ -34,12 +36,13 @@ export default function ProductGallery({
             onSelect={setColor}
           />
         )}
-        <div className="flex-1 rounded-2xl border border-zinc-200 bg-zinc-50 p-6">
+        <div className="flex flex-1 items-center justify-center p-6 sm:p-8">
           <ZoomableProductImage
             src={imageSrc}
             alt={`${product.model} in ${color}`}
             imageWidth={product.imageWidth}
             imageHeight={product.imageHeight}
+            onExpand={() => setModalOpen(true)}
           />
         </div>
       </div>
@@ -49,6 +52,17 @@ export default function ProductGallery({
         <ProductOptions product={product} color={color} onColorChange={setColor} />
         {footer}
       </div>
+
+      {modalOpen && (
+        <ProductImageModal
+          product={product}
+          color={color}
+          imageSrc={imageSrc}
+          thumbnails={thumbnails}
+          onSelectColor={setColor}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

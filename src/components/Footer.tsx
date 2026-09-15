@@ -12,9 +12,9 @@ export default function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-600">
-              Swappei Inc is a US-based retailer of tested, graded, and
-              guaranteed pre-owned smartphones, operating in partnership with
-              Sachi Trading (サチ通商).
+              We test and grade every phone before it ships, then back it
+              with a real warranty. Swappei is a Sachi Trading (サチ通商)
+              company.
             </p>
           </div>
 
