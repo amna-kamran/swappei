@@ -4,7 +4,17 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 
 const ZOOM = 2.2;
-const LENS_SIZE = 100 / ZOOM; // percent of the image's width/height
+
+type ZoomState = {
+  lensX: number;
+  lensY: number;
+  lensW: number;
+  lensH: number;
+  bgX: number;
+  bgY: number;
+  bgW: number;
+  bgH: number;
+};
 
 export default function ZoomableProductImage({
   src,
@@ -17,60 +27,88 @@ export default function ZoomableProductImage({
   imageWidth: number;
   imageHeight: number;
 }) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
-  const [lens, setLens] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState<ZoomState | null>(null);
 
-  function handleMouseMove(e: React.MouseEvent) {
-    const rect = wrapperRef.current?.getBoundingClientRect();
+  function updateFromEvent(e: React.MouseEvent) {
+    const rect = boxRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const xPct = ((e.clientX - rect.left) / rect.width) * 100;
-    const yPct = ((e.clientY - rect.top) / rect.height) * 100;
-    const maxPos = 100 - LENS_SIZE;
-    setLens({
-      x: Math.min(Math.max(xPct - LENS_SIZE / 2, 0), maxPos),
-      y: Math.min(Math.max(yPct - LENS_SIZE / 2, 0), maxPos),
+
+    const boxW = rect.width;
+    const boxH = rect.height;
+
+    // How the image sits inside the box under object-contain.
+    const scale = Math.min(boxW / imageWidth, boxH / imageHeight);
+    const dispW = imageWidth * scale;
+    const dispH = imageHeight * scale;
+    const offsetX = (boxW - dispW) / 2;
+    const offsetY = (boxH - dispH) / 2;
+
+    // Cursor position, clamped to the displayed image (not the empty letterbox area).
+    const cursorX = Math.min(Math.max(e.clientX - rect.left, offsetX), offsetX + dispW);
+    const cursorY = Math.min(Math.max(e.clientY - rect.top, offsetY), offsetY + dispH);
+
+    const lensW = dispW / ZOOM;
+    const lensH = dispH / ZOOM;
+
+    // Lens top-left in image-display space, clamped to stay within the image.
+    let lensXInImage = cursorX - offsetX - lensW / 2;
+    let lensYInImage = cursorY - offsetY - lensH / 2;
+    lensXInImage = Math.min(Math.max(lensXInImage, 0), Math.max(dispW - lensW, 0));
+    lensYInImage = Math.min(Math.max(lensYInImage, 0), Math.max(dispH - lensH, 0));
+
+    setZoom({
+      lensX: lensXInImage + offsetX,
+      lensY: lensYInImage + offsetY,
+      lensW,
+      lensH,
+      bgX: -lensXInImage * ZOOM,
+      bgY: -lensYInImage * ZOOM,
+      bgW: dispW * ZOOM,
+      bgH: dispH * ZOOM,
     });
   }
 
-  const maxPos = 100 - LENS_SIZE;
-  const bgX = maxPos > 0 ? (lens.x / maxPos) * 100 : 0;
-  const bgY = maxPos > 0 ? (lens.y / maxPos) * 100 : 0;
-
   return (
     <div
-      ref={wrapperRef}
-      className="relative h-80 w-auto cursor-crosshair"
-      onMouseEnter={() => setActive(true)}
+      ref={boxRef}
+      className="relative h-96 w-full cursor-crosshair"
+      onMouseEnter={(e) => {
+        setActive(true);
+        updateFromEvent(e);
+      }}
       onMouseLeave={() => setActive(false)}
-      onMouseMove={handleMouseMove}
+      onMouseMove={updateFromEvent}
     >
       <Image
         src={src}
         alt={alt}
-        width={imageWidth}
-        height={imageHeight}
-        className="h-80 w-auto"
+        fill
+        sizes="(min-width: 1024px) 420px, 350px"
+        className="object-contain"
         priority
       />
 
-      {active && (
+      {active && zoom && (
         <>
           <div
             className="pointer-events-none absolute border-2 border-brand-500 bg-brand-500/10"
             style={{
-              width: `${LENS_SIZE}%`,
-              height: `${LENS_SIZE}%`,
-              left: `${lens.x}%`,
-              top: `${lens.y}%`,
+              width: zoom.lensW,
+              height: zoom.lensH,
+              left: zoom.lensX,
+              top: zoom.lensY,
             }}
           />
           <div
-            className="pointer-events-none absolute left-full top-0 z-20 ml-4 hidden h-80 w-80 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xl lg:block"
+            className="pointer-events-none absolute left-full top-0 z-20 ml-4 hidden overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xl lg:block"
             style={{
+              width: zoom.lensW * ZOOM,
+              height: zoom.lensH * ZOOM,
               backgroundImage: `url(${src})`,
-              backgroundSize: `${ZOOM * 100}% ${ZOOM * 100}%`,
-              backgroundPosition: `${bgX}% ${bgY}%`,
+              backgroundSize: `${zoom.bgW}px ${zoom.bgH}px`,
+              backgroundPosition: `${zoom.bgX}px ${zoom.bgY}px`,
               backgroundRepeat: "no-repeat",
             }}
           />
